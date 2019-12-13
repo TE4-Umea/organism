@@ -27,7 +27,7 @@ function main() {
     r = new Rock(8*tileSize, 8*tileSize, tileSize);
 
     resetBoard();
-
+    p.resetStats();
 
     p.drawPlayer(ctx);
 
@@ -48,7 +48,8 @@ function step() {
         resetBoard();
         p.drawPlayer(ctx);
         //r.draw();
-        
+        p.stats();
+        p.drawStats(ctx);
     }
     window.requestAnimationFrame(step);
 }

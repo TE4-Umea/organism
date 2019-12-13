@@ -2,6 +2,8 @@ class Player {
     constructor(posX, posY, tileSize) {
         this.position = new Cord(posX, posY);
         this.tileSize = tileSize;
+        this.food;
+        this.water;
     }
 
     getPosition() {
@@ -18,7 +20,6 @@ class Player {
         var y = this.position.getY();
         console.log("x is: " + x + " y is: " + y);
         ctx.fillRect(x, y, this.tileSize, this.tileSize);
-    
     }
 
     move() {
@@ -74,7 +75,6 @@ class Player {
         }
     }
 
-
     collide(posX, posY){
         if (posX < 0 || posX >= document.getElementById('canvas').width) {
             return true;
@@ -94,5 +94,44 @@ class Player {
         }); */
 
         return false;
+    }
+
+    resetStats(){
+        this.food = 100;
+        this.water = 100;
+    }
+
+    stats(){
+        if(this.food == 0 || this.water == 0) {
+            console.log("Game over");
+        }
+
+        this.food = this.food - 1;
+        this.water = this.water - 1;
+    }
+
+    drawStats() {
+        ctx.beginPath();
+        ctx.rect(tileSize * 0.5, tileSize * 14.5, tileSize * 10, tileSize * 1);
+        ctx.fillStyle = 'rgba(0,0,0,0.8)';
+        ctx.fill();
+
+        var foodWidth = this.food;
+        console.log(tileSize * 9.6 - foodWidth);
+
+        ctx.beginPath();
+        ctx.rect(tileSize * 0.7, tileSize * 14.7, tileSize * 9.6 - foodWidth, tileSize * 0.6);
+        ctx.fillStyle = 'rgba(255,255,255,0.8)';
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.rect(tileSize * 11.5, tileSize * 14.5, tileSize * 10, tileSize * 1);
+        ctx.fillStyle = 'rgba(0,0,0,0.8)';
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.rect(tileSize * 11.7, tileSize * 14.7, tileSize * 9.6, tileSize * 0.6);
+        ctx.fillStyle = 'rgba(255,255,255,0.8)';
+        ctx.fill();
     }
 }
