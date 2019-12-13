@@ -15,26 +15,26 @@ class Player {
     }
 
     drawPlayer(ctx) {
-        ctx.fillStyle = "#FF0000";
+        ctx.fillStyle = '#FF0000';
         var x = this.position.getX();
         var y = this.position.getY();
-        console.log("x is: " + x + " y is: " + y);
+        // console.log("x is: " + x + " y is: " + y);
         ctx.fillRect(x, y, this.tileSize, this.tileSize);
     }
 
     move() {
         var x = this.position.getX();
         var y = this.position.getY();
-        console.log("MOVE: x is: " + x + " y is: " + y + " " +  (Math.floor(Math.random() * 9)));
-        
+        // console.log("MOVE: x is: " + x + " y is: " + y + " " +  (Math.floor(Math.random() * 9)));
+
         switch (Math.floor(Math.random() * 9)) {
-            case 0: 
+            case 0:
                 break;
-            case 1: 
+            case 1:
                 if (!this.collide(x - this.tileSize, y))
                     this.setPosition(x - this.tileSize, y);
                 break;
-            case 2: 
+            case 2:
                 if (!this.collide(x - this.tileSize, y + this.tileSize)) {
                     this.setPosition(x - this.tileSize, y + this.tileSize);
                 }
@@ -69,9 +69,8 @@ class Player {
                     this.setPosition(x - this.tileSize, y - this.tileSize);
                 }
                 break;
-            default: 
+            default:
                 break;
-
         }
     }
 
